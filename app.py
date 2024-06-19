@@ -91,8 +91,8 @@ def stop():
 
 @app.route('/status', methods=['GET'])
 def status():
-    global running, cookies
-    return jsonify(running=running, cookies=cookies)
+    global running
+    return jsonify(running=running)
 
 
 if __name__ == '__main__':
