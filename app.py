@@ -4,7 +4,7 @@ import threading
 
 import requests
 from bs4 import BeautifulSoup
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, redirect, url_for, jsonify
 
 from sendmail import send_email
 
@@ -14,10 +14,17 @@ url = "https://frixx.ge/code"
 generated_codes = set()
 process_thread = None
 running = False
-cookies = {}
 
 
 def check_codes(code):
+    cookies = {
+        'PHPSESSID': 'u1319tstfs8q58aa6j0emqlr7p',
+        '_fbc': 'fb.1.1718391549391.IwZXh0bgNhZW0CMTAAAR1PY1LQngY_fGQNdyFZiELBYwC1xEYtcihacLebiaNMaEb1DyEeH3zlwy4_aem_ZmFrZWR1bW15MTZieXRlcw',
+        '_fbp': 'fb.1.1718363165898.615537654745900569',
+        '_ga': 'GA1.1.831886953.1718363165',
+        f"_ga_7ZV1YGSDY0": 'GS1.1.1718813589.20.1.1718813625.0.0.0'
+    }
+
     session = requests.Session()
     session.cookies.update(cookies)
     try:
@@ -61,19 +68,6 @@ def run_code():
 @app.route('/')
 def index():
     return render_template('index.html')
-
-
-@app.route('/set-cookies', methods=['POST'])
-def set_cookies():
-    global cookies
-    cookies = {
-        'PHPSESSID': request.form['phpsessid'],
-        '_fbc': request.form['fbc'],
-        '_fbp': request.form['fbp'],
-        '_ga': request.form['ga'],
-        f"{request.form['ga_7zv1ygsdy0_key']}": request.form['ga_7zv1ygsdy0']
-    }
-    return redirect(url_for('index'))
 
 
 @app.route('/start', methods=['POST'])
