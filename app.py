@@ -18,11 +18,11 @@ running = False
 
 def check_codes(code):
     cookies = {
-        'PHPSESSID': 'o76jg79h73ajtfv2mmfqd1gqe4',
+        'PHPSESSID': '81r4d8et5jg2obau4q836bjg75',
         # '_fbc': 'fb.1.1718391549391.IwZXh0bgNhZW0CMTAAAR1PY1LQngY_fGQNdyFZiELBYwC1xEYtcihacLebiaNMaEb1DyEeH3zlwy4_aem_ZmFrZWR1bW15MTZieXRlcw',
         '_fbp': 'fb.1.1718897614930.208149441986148181',
         '_ga': 'GA1.1.1577307525.1718897615',
-        f"_ga_7ZV1YGSDY0": 'GS1.1.1719611839.6.1.1719611897.0.0.0'
+        f"_ga_7ZV1YGSDY0": 'GS1.1.1720275473.7.1.1720275495.0.0.0'
     }
 
     session = requests.Session()
